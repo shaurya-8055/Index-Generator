@@ -15,6 +15,7 @@ class IndexState(TypedDict, total=False):
     chunks: list[dict]  # [{"page": int, "text": str}, ...]
     topics: list[str]
     normalized_topics: dict[str, list[str]]  # canonical -> [variants]
+    topic_pages: dict[str, list[int]]  # canonical -> [page numbers]
     index: dict
     index_text: str
     exported_files: list[str]

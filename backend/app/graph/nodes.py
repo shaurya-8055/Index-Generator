@@ -65,12 +65,12 @@ def page_mapping_node(state: dict) -> dict:
         state.get("normalized_topics", {}),
         state.get("pages", {}),
     )
-    return {"_topic_pages": topic_pages}
+    return {"topic_pages": topic_pages}
 
 
 def index_formatter_node(state: dict) -> dict:
     """Node 6 — build the alphabetical, grouped index structure + text."""
-    topic_pages = state.get("_topic_pages", {})
+    topic_pages = state.get("topic_pages", {})
     index = format_index(topic_pages)
     return {"index": index, "index_text": format_index_text(index)}
 

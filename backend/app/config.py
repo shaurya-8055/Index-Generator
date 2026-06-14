@@ -44,6 +44,7 @@ class Settings(BaseSettings):
     llm_provider: str = "fallback"
     llm_model: str = ""  # provider-specific default applied if empty
     llm_temperature: float = 0.0
+    llm_max_retries: int = 1
     openai_api_key: str = ""
     google_api_key: str = ""
     ollama_base_url: str = "http://localhost:11434"

@@ -47,6 +47,7 @@ def get_chat_model():
             model=model,
             temperature=temperature,
             api_key=settings.openai_api_key,
+            max_retries=settings.llm_max_retries,
         )
     if provider == "gemini":
         from langchain_google_genai import ChatGoogleGenerativeAI
@@ -55,6 +56,9 @@ def get_chat_model():
             model=model,
             temperature=temperature,
             google_api_key=settings.google_api_key,
+            # Fail fast so we fall back to the heuristic quickly on quota errors
+            # instead of retrying with long backoffs on every chunk.
+            max_retries=settings.llm_max_retries,
         )
     if provider == "ollama":
         from langchain_ollama import ChatOllama
